@@ -10,7 +10,7 @@ int main()
     scanf("%d",&d);
     printf("Enter the Base: ");
     scanf("%d",&b);
-    vol=((1/3)*((h*d*b)+(d/b)));
+    vol=((0.333)*((h*d*b)+(d/b)));
     printf("The Volume of tromboloid is %f",vol);
     return 0;
 }
