@@ -3,7 +3,7 @@
 int main()
 {
   int h,d,b;
-  float vol;
+  int vol;
   h=input();
   d=input();
   b=input();
@@ -20,11 +20,11 @@ int input()
 }
 int volume(int h,int d,int b)
 {
-  float funvol;
+  int funvol;
   funvol=((0.333)*((h*d*b)+(d/b)));
   return (funvol);
 }
-void output(float vol)
+void output(int vol)
 {
-  printf("The volume of tromboloid is %f", vol);
+  printf("The volume of tromboloid is %d units.",vol);
 }
