@@ -14,24 +14,24 @@ int main()
   a.y=input();
   b.x=input();
   b.y=input();
-  distance=distcal(a.x,a.y,b.x,b.y);
-  output(a.x,a.y,b.x,b.y,distance);
+  distance=distcal(a,b);
+  output(a,b,distance);
   return 0;
 }
 int input()
 {
-  int a;
+  int c;
   printf("Enter the coordinate: ");
-  scanf("%d",&a);
-  return (a);
+  scanf("%d",&c);
+  return (c);
 }
-int distcal(int a.x, int a.y, int b.x, int b.y)
+int distcal(struct points a, struct points b)
 {
   int dist;
   dist=sqrt((pow(b.x-a.x,2))+(pow(b.y-a.y,2)));
   return (dist);
 }
-void output(int a.x,int a.y, int b.x, int b.y, int distance)
+void output(struct points a, struct points b, int distance)
 {
   printf("The distance between %d,%d and %d,%d is %d units", a.x, a.y, b.x, b.y, distance);
 }
