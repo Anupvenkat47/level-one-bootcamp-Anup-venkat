@@ -5,7 +5,7 @@ int main()
   int n,i,sum=0;
   printf("Enter the number of numbers you want to add: ");
   scanf("%d", &n);
-  for(i=1;i<=num;i++)
+  for(i=1;i<=n;i++)
   {
     sum=sum+i;
   }
