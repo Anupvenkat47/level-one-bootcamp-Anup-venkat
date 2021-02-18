@@ -7,6 +7,7 @@ struct fraction
 int main()
 {
   struct fraction a,b,sum;
+  int gcdmain;
   printf("The numbers are entered in this order, First fraction numerator and denominator, then second numerator and denominator.\n");
   a.n=input();
   a.d=input();
@@ -14,7 +15,8 @@ int main()
   b.d=input();
   sum.n=addnum(a,b);
   sum.d=addden(a,b);
-  output(sum);
+  gcdmain=simplify(sum);
+  output(sum,gcdmain);
 }
 int input()
 {
@@ -35,7 +37,17 @@ int addden(struct fraction a, struct fraction b)
   den=(a.d*b.d);
   return (den);
 }
-void output(struct fraction sum)
+int simplify(struct fraction sum)
 {
-  printf("The sum is %d/%d", sum.n,sum.d);
+    int gcd,i;
+    for(i=1; i <= sum.n && i <= sum.d; ++i)
+    {
+    if(sum.n%i==0 && sum.d%i==0)
+        gcd = i;
+    }
+    return gcd;
+}
+void output(struct fraction sum,int gcdmain)
+{
+  printf("The sum is %d/%d", sum.n/gcdmain,sum.d/gcdmain);
 }
