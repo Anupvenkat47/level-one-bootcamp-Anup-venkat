@@ -7,28 +7,39 @@ struct fraction
 int main()
 {
   struct fraction a,b,c,sum;
-  int n,i,gcdmain;
-  printf("The numbers are entered in this order, First fraction numerator and denominator, then second numerator and denominator after that extra numerator and denominator are added if the user has specified it.\n");
-  printf("Enter the number of fractions to be added (minimum 2): ");
-  scanf("%d",&n);
-  n=n-2;
+  int number,gcdmain;
+  number=initialinput();
+  number=number-2;
   a.n=input();
   a.d=input();
   b.n=input();
   b.d=input();
   sum.n=firstaddnum(a,b);
   sum.d=firstaddden(a,b);
-  printf("Enter the next %d fractions by entering numerator and denominator, one after another: \n",n);
-  for(i=0;i<n;i++)
+  printf("Enter the next %d fractions by entering numerator and denominator, one after another: \n",number);
+  addtionalfraction(c,sum,number);
+  gcdmain=simplify(sum);
+  output(sum,gcdmain);
+  return 0;
+}
+int initialinput()
+{
+  int n;
+  printf("The numbers are entered in this order, First fraction numerator and denominator, then second numerator and denominator after that extra numerator and denominator are added if the user has specified it.\n");
+  printf("Enter the number of fractions to be added (minimum 2): ");
+  scanf("%d",&n);
+  return(n);
+}
+int addtionalfraction(struct fraction c,struct fraction sum,int number)
+{
+    int i;
+    for(i=0;i<number;i++)
   {
     c.n=input();
     c.d=input();
     sum.n=extraaddnum(c,sum);
     sum.d=extraaddden(c,sum);
   }
-  gcdmain=simplify(sum);
-  output(sum,gcdmain);
-  return 0;
 }
 int input()
 {
@@ -75,4 +86,3 @@ void output(struct fraction sum,int gcdmain)
 {
   printf("The sum is %d/%d", sum.n/gcdmain, sum.d/gcdmain);
 }
-
