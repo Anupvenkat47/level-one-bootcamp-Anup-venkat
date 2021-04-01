@@ -7,15 +7,17 @@ int main()
   printf("Enter the number of numbers you want to add: ");
   scanf("%d", &n);
   sum=sumofn(sum,n);
-  printf("The sum of first %d number = %d", n, sum);
+  printf("The sum of given %d number = %d", n, sum);
   return 0;
 }
 int sumofn(int sum,int n)
 {
-    int i;
+    int i,num;
     for(i=1;i<=n;i++)
   {
-    sum=sum+i;
+    printf("Enter the number to be added: ");
+    scanf("%d",&num);
+    sum=sum+num;
   }
     return sum;
 }
