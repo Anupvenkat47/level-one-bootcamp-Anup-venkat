@@ -4,20 +4,27 @@ struct fraction
 {
   int n,d,final;
 };
+int initialinput();
+int addtionalfractionn(struct fraction c,struct fraction sum,int number);
+int addtionalfractiond(struct fraction c,struct fraction sum,int number);
+int input();
+int firstaddnum(struct fraction a, struct fraction b);
+int firstaddden(struct fraction a, struct fraction b);
+int simplify(struct fraction sum);
+void output(struct fraction sum,int gcdmain);
 int main()
 {
   struct fraction a,b,c,sum;
   int number,gcdmain;
   number=initialinput();
-  number=number-2;
   a.n=input();
   a.d=input();
   b.n=input();
   b.d=input();
   sum.n=firstaddnum(a,b);
   sum.d=firstaddden(a,b);
-  printf("Enter the next %d fractions by entering numerator and denominator, one after another: \n",number);
-  addtionalfraction(c,sum,number);
+  sum.n=addtionalfractionn(c,sum,number);
+  sum.d=addtionalfractiond(c,sum,number);
   gcdmain=simplify(sum);
   output(sum,gcdmain);
   return 0;
@@ -28,18 +35,31 @@ int initialinput()
   printf("The numbers are entered in this order, First fraction numerator and denominator, then second numerator and denominator after that extra numerator and denominator are added if the user has specified it.\n");
   printf("Enter the number of fractions to be added (minimum 2): ");
   scanf("%d",&n);
-  return(n);
+  return(n-2);
 }
-int addtionalfraction(struct fraction c,struct fraction sum,int number)
+int addtionalfractionn(struct fraction c,struct fraction sum,int number)
 {
-    int i;
+    printf("Enter the next %d numerator and denominator , one after another: \n",number);
+    int i,an;
     for(i=0;i<number;i++)
   {
     c.n=input();
     c.d=input();
-    sum.n=extraaddnum(c,sum);
-    sum.d=extraaddden(c,sum);
+    an=((c.n*sum.d)+(sum.n*c.d));
   }
+  return (an);
+}
+int addtionalfractiond(struct fraction c,struct fraction sum,int number)
+{
+    printf("Enter the same %d numerators and denominators, one after another: \n",number);
+    int i,ad;
+    for(i=0;i<number;i++)
+  {
+    c.n=input();
+    c.d=input();
+    ad=(c.d*sum.d);
+  }
+  return (ad);
 }
 int input()
 {
@@ -59,18 +79,6 @@ int firstaddden(struct fraction a, struct fraction b)
   int den;
   den=(a.d*b.d);
   return (den);
-}
-int extraaddnum(struct fraction c, struct fraction sum)
-{
-  int extranum;
-  extranum=((c.n*sum.d)+(sum.n*c.d));
-  return (extranum);
-}
-int extraaddden(struct fraction c, struct fraction sum)
-{
-  int extraden;
-  extraden=(c.d*sum.d);
-  return (extraden);
 }
 int simplify(struct fraction sum)
 {
